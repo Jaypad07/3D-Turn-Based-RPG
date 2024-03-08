@@ -52,6 +52,7 @@ public class Character : MonoBehaviour
     void OnNewTurn()
     {
         characterUI.ToggleTurnVisual(TurnManager.instance.GetCurrentTurnCharacter() == this);
+        characterEffects.ApplyCurrentEffects();
     }
 
     public void CastCombatAction(CombatAction combatAction, Character target = null)
@@ -76,6 +77,15 @@ public class Character : MonoBehaviour
 
     public void Heal(int amount)
     {
+        curHp += amount;
+
+        if (curHp > maxHp)
+        {
+            curHp = maxHp;
+        }
+        
+        characterUI.UpdateHealthBar(curHp, maxHp);
+        Instantiate(healParticlePrefab, transform);
     }
 
     void Die()

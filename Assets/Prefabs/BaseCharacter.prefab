@@ -679,6 +679,7 @@ MonoBehaviour:
   displayName: Character
   curHp: 10
   maxHp: 10
+  combatActions: []
   characterEffects: {fileID: 96758865775823031}
   characterUI: {fileID: 8441896654775697119}
   selectionVisual: {fileID: 2395056792409685921}

@@ -2,10 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Character : MonoBehaviour
 {
-    public enum  Team
+    public enum Team
     {
         Player,
         Enemy
@@ -41,8 +42,71 @@ public class Character : MonoBehaviour
         TurnManager.instance.onNewTurn -= OnNewTurn;
     }
 
+    private void Start()
+    {
+        _standingPosition = transform.position;
+        characterUI.SetCharacterNameText(displayName);
+        characterUI.UpdateHealthBar(curHp, maxHp);
+    }
+
     void OnNewTurn()
     {
         characterUI.ToggleTurnVisual(TurnManager.instance.GetCurrentTurnCharacter() == this);
+    }
+
+    public void CastCombatAction(CombatAction combatAction, Character target = null)
+    {
+        if (target == null)
+            target = this;
+        
+        combatAction.Cast(this, target);
+    }
+
+    public void TakeDamage(int damage)
+    {
+        curHp -= damage;
+        
+        characterUI.UpdateHealthBar(curHp, maxHp);
+
+        if (curHp <= 0)
+        {
+            Die();
+        }
+    }
+
+    public void Heal(int amount)
+    {
+    }
+
+    void Die()
+    {
+        Destroy(gameObject);
+    }
+
+    public void MovetoTarget(Character target, UnityAction<Character> arriveCallback)
+    {
+        StartCoroutine(MeleeAttackAnimation());
+
+        IEnumerator MeleeAttackAnimation()
+        {
+            while (transform.position != target.transform.position)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, target.transform.position, 10 * Time.deltaTime);
+                yield return null;
+            }
+
+            arriveCallback?.Invoke(target);
+
+            while (transform.position != _standingPosition)
+            {
+                transform.position = Vector3.MoveTowards(transform.position, _standingPosition, 10 * Time.deltaTime);
+                yield return null;
+            }
+        }
+    }
+
+    public void ToggleSelectionVisual(bool toggle)
+    {
+        selectionVisual.SetActive(toggle);
     }
 }

@@ -9,6 +9,11 @@ public class MeleeCombatAction : CombatAction
     
     public override void Cast(Character caster, Character target)
     {
-        
+        caster.MovetoTarget(target, OnDamageTargetCallback);
+    }
+
+    void OnDamageTargetCallback(Character target)
+    {
+        target.TakeDamage(meleeDamage);
     }
 }

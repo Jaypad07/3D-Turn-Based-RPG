@@ -148,7 +148,7 @@ public class EnemyCombatManager : MonoBehaviour
         int weakestHp = 999;
         int weakestIndex = 0;
 
-        Character[] characters = team == Character.Team.Player ? GameManager.Instance.playerTeam : GameManager.Instance.enemyTeam;
+        Character[] characters = team == Character.Team.Player ? GameManager.Instance.playerTeam.ToArray() : GameManager.Instance.enemyTeam;
 
         for (int i = 0; i < characters.Length; i++)
         {

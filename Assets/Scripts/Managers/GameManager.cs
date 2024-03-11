@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public Character[] playerTeam;
+    public List<Character> playerTeam;
     public Character[] enemyTeam;
 
     private List<Character> allCharacters = new List<Character>();
@@ -20,6 +20,20 @@ public class GameManager : MonoBehaviour
     public CharacterSet defaultEnemySet;
 
     public static GameManager Instance;
+    public static CharacterSet curEnemySet;
+    
+    // For saving player progress.
+    public MapData data;
+
+    private void OnEnable()
+    {
+        Character.onCharacterDeath += OnCharacterKilled;
+    }
+
+    private void OnDisable()
+    {
+        Character.onCharacterDeath -= OnCharacterKilled;
+    }
 
     private void Awake()
     {
@@ -35,13 +49,21 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        CreateCharacters(playerPersistentData, defaultEnemySet);
+        if (curEnemySet == null)
+        {
+            CreateCharacters(playerPersistentData, defaultEnemySet);
+        }
+        else
+        {
+            CreateCharacters(playerPersistentData, curEnemySet);
+        }
+        
         TurnManager.instance.Begin();
     }
 
     void CreateCharacters(PlayerPersistentData playerData, CharacterSet enemyTeamSet)
     {
-        playerTeam = new Character[playerData.characters.Length];
+        playerTeam = new List<Character>();
         enemyTeam = new Character[enemyTeamSet.characters.Length];
 
         int playerSpawnIndex = 0;
@@ -52,12 +74,8 @@ public class GameManager : MonoBehaviour
             {
                 Character character = CreateCharacter(playerData.characters[i].characterPrefab, playerTeamSpawns[playerSpawnIndex]);
                 character.curHp = playerData.characters[i].health;
-                playerTeam[i] = character;
+                playerTeam.Add(character);
                 playerSpawnIndex++;
-            }
-            else
-            {
-                playerTeam[i] = null;
             }
         }
 
@@ -77,7 +95,7 @@ public class GameManager : MonoBehaviour
         return obj.GetComponent<Character>();
     }
 
-    public void OnCharacterKilled(Character character)
+    void OnCharacterKilled(Character character)
     {
         allCharacters.Remove(character);
 
@@ -116,7 +134,7 @@ public class GameManager : MonoBehaviour
 
     void UpdatePlayerPersistentData()
     {
-        for (int i = 0; i < playerTeam.Length; i++)
+        for (int i = 0; i < playerTeam.Count; i++)
         {
             if (playerTeam[i] != null)
             {
@@ -131,6 +149,7 @@ public class GameManager : MonoBehaviour
 
     void LoadMapScene()
     {
+        MapManager.instance.data.IncrementEncounter();
         SceneManager.LoadScene("Map");
     }
 }

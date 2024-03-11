@@ -9,9 +9,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5163fa7311d30da459281e615d88be07, type: 3}
-  m_Name: Enemy0_Rock
+  m_Script: {fileID: 11500000, guid: 41f1a2efc0dee0540a2567f3ff349c58, type: 3}
+  m_Name: Map Data
   m_EditorClassIdentifier: 
-  displayName: Rock
-  description: Throw a Rock.
-  projectilePrefab: {fileID: 4903492801426536474, guid: e76ab2a8724dc0342bab43940888c73e, type: 3}
+  curEncounter: 0

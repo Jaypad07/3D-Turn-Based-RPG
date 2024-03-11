@@ -19,12 +19,19 @@ public class PlayerPersistentData : ScriptableObject
 
     
 
-    public void ResetCharacters()
+    public void ResetCharacters ()
     {
-        for (int i = 0; i < characters.Length; i++)
+        for(int i = 0; i < characters.Length; i++)
         {
-            characters[i].health = characters[i].characterPrefab.GetComponent<Character>().maxHp;
-            characters[i].isDead = false;
+            if (characters[i].characterPrefab != null)
+            {
+                if (characters[i].characterPrefab.
+                    TryGetComponent<Character>(out var character))
+                {
+                    characters[i].health = character.maxHp;
+                    characters[i].isDead = false;
+                }
+            }
         }
     }
 }

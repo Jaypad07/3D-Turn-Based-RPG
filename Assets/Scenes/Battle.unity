@@ -2731,7 +2731,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 50
+  field of view: 45
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -3573,6 +3573,7 @@ GameObject:
   - component: {fileID: 1323572914}
   - component: {fileID: 1323572916}
   - component: {fileID: 1323572917}
+  - component: {fileID: 1323572918}
   m_Layer: 0
   m_Name: _GameManager
   m_TagString: Untagged
@@ -3649,6 +3650,45 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   combatActionsUI: {fileID: 62459490}
+--- !u!114 &1323572918
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1323572913}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8f8cb4fa2d83474eb197b70b9e62a3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  minWaitTime: 0.2
+  maxWaitTime: 1
+  attackWeakestChance: 0.7
+  healChanceCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0.00088119507
+      value: 0.9002075
+      inSlope: -1.3227512
+      outSlope: -1.3227512
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.11179156
+    - serializedVersion: 3
+      time: 0.45091814
+      value: 0.0038986057
+      inSlope: 0.08202923
+      outSlope: 0.08202923
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.067893624
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &1412050192 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 77f90508e24cd484093120b092f0783d, type: 3}
@@ -4562,6 +4602,6 @@ SceneRoots:
   - {fileID: 545904057}
   - {fileID: 1306071798}
   - {fileID: 1256609752}
-  - {fileID: 1323572915}
   - {fileID: 62459489}
   - {fileID: 1048806019}
+  - {fileID: 1323572915}

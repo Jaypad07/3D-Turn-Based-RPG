@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5429e392a6c087741a5098cd2e76cebb, type: 3}
-  m_Name: Player0_Heal
+  m_Script: {fileID: 11500000, guid: 5163fa7311d30da459281e615d88be07, type: 3}
+  m_Name: Enemy0_Rock
   m_EditorClassIdentifier: 
-  displayName: Heal
-  description: Heal a target for 5 health.
-  healAmount: 7
+  displayName: Rock
+  description: 
+  projectilePrefab: {fileID: 4903492801426536474, guid: e76ab2a8724dc0342bab43940888c73e, type: 3}

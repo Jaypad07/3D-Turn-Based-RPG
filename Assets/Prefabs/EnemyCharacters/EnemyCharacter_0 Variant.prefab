@@ -14,16 +14,32 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2227757582036530418, guid: 22df2a870b2e488458660ba6e3cb0ef2, type: 3}
       propertyPath: curHp
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2227757582036530418, guid: 22df2a870b2e488458660ba6e3cb0ef2, type: 3}
       propertyPath: maxHp
-      value: 12
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 2227757582036530418, guid: 22df2a870b2e488458660ba6e3cb0ef2, type: 3}
       propertyPath: displayName
       value: Orc
       objectReference: {fileID: 0}
+    - target: {fileID: 2227757582036530418, guid: 22df2a870b2e488458660ba6e3cb0ef2, type: 3}
+      propertyPath: combatActions.Array.size
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2227757582036530418, guid: 22df2a870b2e488458660ba6e3cb0ef2, type: 3}
+      propertyPath: combatActions.Array.data[0]
+      value: 
+      objectReference: {fileID: 11400000, guid: e45158b2f2fda13479d0f8a0058fcec5, type: 2}
+    - target: {fileID: 2227757582036530418, guid: 22df2a870b2e488458660ba6e3cb0ef2, type: 3}
+      propertyPath: combatActions.Array.data[1]
+      value: 
+      objectReference: {fileID: 11400000, guid: 1e9e12619c37c8249ac7586a6ee516c8, type: 2}
+    - target: {fileID: 2227757582036530418, guid: 22df2a870b2e488458660ba6e3cb0ef2, type: 3}
+      propertyPath: combatActions.Array.data[2]
+      value: 
+      objectReference: {fileID: 11400000, guid: e84fdbfdc7aaf0d4e8615b19b4386d62, type: 2}
     - target: {fileID: 3553955888963269836, guid: 22df2a870b2e488458660ba6e3cb0ef2, type: 3}
       propertyPath: m_Name
       value: EnemyCharacter_0 Variant

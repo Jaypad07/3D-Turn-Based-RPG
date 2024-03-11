@@ -9,9 +9,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5429e392a6c087741a5098cd2e76cebb, type: 3}
-  m_Name: Player0_Heal
+  m_Script: {fileID: 11500000, guid: f3ad78ab6f1104d49a3138059a51c0ac, type: 3}
+  m_Name: Enemy0_Slash
   m_EditorClassIdentifier: 
-  displayName: Heal
-  description: Heal a target for 5 health.
-  healAmount: 7
+  displayName: Slash
+  description: 
+  meleeDamage: 3

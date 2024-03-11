@@ -1,18 +1,35 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DamageFlash : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    private Renderer[] rs;
+
+    private void Start()
     {
-        
+        rs = GetComponentsInChildren<Renderer>();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void Flash()
     {
-        
+        StartCoroutine(FlashCoroutine());
+        IEnumerator FlashCoroutine()
+        {
+            SetMREmission(Color.red);
+
+            yield return new WaitForSeconds(0.05f);
+            
+            SetMREmission(Color.black);
+        }
+    }
+
+    void SetMREmission(Color color)
+    {
+        for (int i = 0; i < rs.Length; i++)
+        {
+            rs[i].material.SetColor("_EmissionColor", color);
+        }
     }
 }

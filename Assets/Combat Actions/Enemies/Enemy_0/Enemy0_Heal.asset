@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5429e392a6c087741a5098cd2e76cebb, type: 3}
-  m_Name: Player0_Heal
+  m_Name: Enemy0_Heal
   m_EditorClassIdentifier: 
   displayName: Heal
-  description: Heal a target for 5 health.
-  healAmount: 7
+  description: 
+  healAmount: 5

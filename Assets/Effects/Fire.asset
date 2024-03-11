@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b91fc60f523f3db4982ae2fc99c0a8a2, type: 3}
   m_Name: Fire
   m_EditorClassIdentifier: 
-  durationOfTurns: 0
-  activePrefab: {fileID: 0}
-  tickPrefab: {fileID: 0}
-  damage: 0
+  durationOfTurns: 3
+  activePrefab: {fileID: 4644150471369201339, guid: 5e7de9d49c9b6734a9298ed49a84485b, type: 3}
+  tickPrefab: {fileID: 4037458917937425990, guid: b77b64ec8b5946840a126aaccbbf7f1b, type: 3}
+  damage: 2

@@ -65,15 +65,72 @@ public class GameManager : MonoBehaviour
         {
             Character character = CreateCharacter(enemyTeamSet.characters[i], enemyTeamSpawns[i]);
             enemyTeam[i] = character;
-            
-            allCharacters.AddRange(playerTeam);
-            allCharacters.AddRange(enemyTeam);
         }
 
-        Character CreateCharacter(GameObject characterPrefab, Transform spawnPos)
+        allCharacters.AddRange(playerTeam);
+        allCharacters.AddRange(enemyTeam);
+    }
+
+    Character CreateCharacter(GameObject characterPrefab, Transform spawnPos)
+    {
+        GameObject obj = Instantiate(characterPrefab, spawnPos.position, spawnPos.rotation);
+        return obj.GetComponent<Character>();
+    }
+
+    public void OnCharacterKilled(Character character)
+    {
+        allCharacters.Remove(character);
+
+        int playersRemaining = 0;
+        int enemiesRemaining = 0;
+
+        for (int i = 0; i < allCharacters.Count; i++)
         {
-            GameObject obj = Instantiate(characterPrefab, spawnPos.position, spawnPos.rotation);
-            return obj.GetComponent<Character>();
+            if (allCharacters[i].team == Character.Team.Player)
+                playersRemaining++;
+            else
+                enemiesRemaining++;
         }
+
+        if (enemiesRemaining == 0)
+        {
+            PlayerTeamWins();
+        }
+        else if (playersRemaining == 0)
+        {
+            EnemyTeamWins();
+        }
+    }
+
+    void PlayerTeamWins()
+    {
+        UpdatePlayerPersistentData();
+        Invoke(nameof(LoadMapScene), 0.5f);
+    }
+
+    void EnemyTeamWins()
+    {
+        playerPersistentData.ResetCharacters();
+        Invoke(nameof(LoadMapScene), 0.5f);
+    }
+
+    void UpdatePlayerPersistentData()
+    {
+        for (int i = 0; i < playerTeam.Length; i++)
+        {
+            if (playerTeam[i] != null)
+            {
+                playerPersistentData.characters[i].health = playerTeam[i].curHp;
+            }
+            else
+            {
+                playerPersistentData.characters[i].isDead = true;
+            }
+        }
+    }
+
+    void LoadMapScene()
+    {
+        SceneManager.LoadScene("Map");
     }
 }

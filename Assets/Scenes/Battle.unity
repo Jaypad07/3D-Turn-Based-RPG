@@ -1648,6 +1648,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 545904057}
+  - component: {fileID: 545904058}
   m_Layer: 0
   m_Name: CameraContainer
   m_TagString: Untagged
@@ -1671,6 +1672,19 @@ Transform:
   - {fileID: 963194228}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &545904058
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 545904056}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9882ae53cba5f8d41b5aa41785a46455, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rotateSpeed: 5
 --- !u!4 &609097618 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 77f90508e24cd484093120b092f0783d, type: 3}
@@ -3605,6 +3619,7 @@ MonoBehaviour:
   - {fileID: 418663140}
   playerPersistentData: {fileID: 11400000, guid: cf6d5bbfec6a0fd42ad1aac2277cbdb3, type: 2}
   defaultEnemySet: {fileID: 11400000, guid: d8a62f701352d7040bd551d3adcd7e93, type: 2}
+  data: {fileID: 11400000, guid: cfed1acf6084ac54ea15d24b419b524d, type: 2}
 --- !u!4 &1323572915
 Transform:
   m_ObjectHideFlags: 0
